@@ -8,13 +8,19 @@ To use GroupMe-Bot-Kit node.js must be installed
 
 
 #Getting Started
-Create a new bot:
-    Name : bots name required to create the bot 
-    GroupId : required to send messages to a group
-    Avatar: url to bot's picture (must go through GroupMe's image service)
-    Callback: url that will recieve a copy of all message sent to bots group
+Steps to get a bot up and running
 
-![alt tag](https://raw.githubusercontent.com/adamwiles/GroupMe-Bot-Kit/master/example.png)
+###Create a Bot
+To create a new bot:
+*Name : bots name required to create the bot 
+*GroupId : required to send messages to a group
+*Avatar: url to bot's picture (must go through GroupMe's image service)
+*Callback: url that will recieve a copy of all message sent to bots group
 
+'''javascript
+var bot = new Bot("Name", GROUP_ID);
+bot.register(USER_TOKEN);
+bot.sendMessage("Test Message");
+'''
 
 
