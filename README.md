@@ -17,10 +17,10 @@ To create a new bot:
 - Avatar: url to bot's picture (must go through GroupMe's image service)
 - Callback: url that will recieve a copy of all message sent to bots group
 
-'''
-var bot = new Bot("Name", GROUP_ID);
-bot.register(USER_TOKEN);
-bot.sendMessage("Test Message");
-'''
+
+    var bot = new Bot("Name", GROUP_ID);
+    bot.register(USER_TOKEN);
+    bot.sendMessage("Test Message");
+
 
 
