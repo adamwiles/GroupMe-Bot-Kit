@@ -9,11 +9,8 @@ var https = require('https');
  * @param responseHandler: a function that handles api response 
  * exports the function as well
  */
-exports.sendRequest = function(apiPath, message, responseHandler, type) {
+exports.sendRequest = function(apiPath, message, responseHandler, type, user) {
 
-    // response from api
-    var response;
-    
     // Tell groupme api that request is a post
 	var optionsPost = {
 		host: "api.groupme.com",
@@ -22,16 +19,18 @@ exports.sendRequest = function(apiPath, message, responseHandler, type) {
 		method: type 
 	};
 
-    // Create http POST request with message to send to group
+    // Create http request with message to send to group
 	var reqPost = https.request(optionsPost, function(res) {
         var buffer = [];
 		res.on('data', function(chunk) {
 			buffer.push(chunk);
-		}).on('end', function() {
+		})
+
+        res.on('end', function() {
             buffer = Buffer.concat(buffer).toString();
-            response = JSON.parse(buffer);
+            var response = JSON.parse(buffer);
             if (response != undefined) {
-                responseHandler(response);
+                responseHandler(response, user);
             } else {
                 throw "Response undefined"
             }

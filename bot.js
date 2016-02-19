@@ -24,11 +24,11 @@ var Bot = function (name, groupId, callback, avatar) {
     }
 
 	this.name = name;
-	this.botId = undefined;
+	this.groupId = groupId;;
 	this.callback = callback;
 	this.avatar = avatar;
-	this.groupId = groupId;;
 	this.groupName = "";
+	this.botId = undefined;
     this.listeners = [];
 };
 
@@ -70,7 +70,7 @@ Bot.prototype.getGroupName = function() { return this.groupName; }
 /**
  * Gets the listeners of the bot to the given name
  */
-Bot.prototype.getListeners = function() { return this.listeners; }
+Bot.prototype.getListeners = function() { return this.listeners.slice(); }
 
 
 
@@ -132,7 +132,7 @@ Bot.prototype.register = function(token) {
         }
     });
 
-    var handleResponse = function(r) {
+    var handleResponse = function(r, bot) {
         // Get registered information for the Bot
         var name       = r.response.bot.name; // bot name
         var new_id     = r.response.bot.bot_id; // bot's id
@@ -141,22 +141,22 @@ Bot.prototype.register = function(token) {
         var callback   = r.response.bot.callback_url; // group name
 
         // Update the new registered information for the Bot
-        if (name != undefined) { this.name = name; }
-        if (new_id != undefined) { this.botId = new_id; }
-        if (group_name != undefined) { this.groupName = group_name; }
-        if (avatar != undefined) { this.avatar = avatar; }
-        if (callback != undefined) { this.callback = callback; }
+        if (name != undefined) { bot.name = name; }
+        if (new_id != undefined) { bot.botId = new_id; }
+        if (group_name != undefined) { bot.groupName = group_name; }
+        if (avatar != undefined) { bot.avatar = avatar; }
+        if (callback != undefined) { bot.callback = callback; }
 
         // Report success and bot information
         console.log("\nSuccess!");
-        console.log(this.name + " registered: ");
-        console.log("    Id: " + this.botId);
-        console.log("    group: " + this.groupName);
-        console.log("    avatar: " + this.avatar);
-        console.log("    callback: " + this.callback);
+        console.log(bot.name + " registered: ");
+        console.log("    Id: " + bot.botId);
+        console.log("    group: " + bot.groupName);
+        console.log("    avatar: " + bot.avatar);
+        console.log("    callback: " + bot.callback);
     }
 
-    sendRequest(apiPath, register_request, handleResponse, "POST");
+    sendRequest(apiPath, register_request, handleResponse, "POST", this);
 }
 
 
@@ -178,14 +178,14 @@ Bot.prototype.sendMessage = function(message, imageUrl) {
    		"text": message
    	});
 
-    var handleResponse = function(r) {
+    var handleResponse = function(r, bot) {
         if (r != undefined) {
             console.log("Message sent!");
         } else {
             console.log("Message Failed.\n" + r);
         }
     }
-    sendRequest("/v3/bots/post", post, handleResponse, "POST");
+    sendRequest("/v3/bots/post", post, handleResponse, "POST", this);
 
 };
 
@@ -198,9 +198,9 @@ Bot.prototype.sendMessage = function(message, imageUrl) {
  */
 Bot.prototype.sameBot = function(bot) {
     if (this.botId == bot.botId) {
-        return 0;
+        return true;
     } else {
-        return -1;
+        return false;
     }
 }
 
