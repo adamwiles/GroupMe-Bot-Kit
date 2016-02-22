@@ -1,5 +1,5 @@
 # GroupMe-Bot-Kit
-A GroupMe api wrapper that combined with node js allows for easy creation and use of GroupMe bots.
+A GroupMe API wrapper that combined with node js allows for easy creation and use of GroupMe bots.
 This wrapper can create a bot and send a message in 3 lines of code, with an access token and a
 group id. Access tokens and group ids can be found on the GroupMe developer website.
 
@@ -7,6 +7,7 @@ group id. Access tokens and group ids can be found on the GroupMe developer webs
 To use GroupMe-Bot-Kit:
    - node.js must be installed
    - must have a GroupMe api user token, can get at (https://dev.groupme.com/)
+
 #Getting Started
 
 ###Creating your first Bot 
@@ -19,8 +20,6 @@ var bot = new Bot("Name", GROUP_ID);
 bot.register(USER_TOKEN);
 bot.sendMessage("Test Message");
 ```
-
-#Classes
 
 #User
 
