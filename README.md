@@ -37,10 +37,10 @@ var user = new User("Name", USER_TOKEN);
 
 ###Fields
 User fields:
-   - name:   the name of the user
-   - token:  the user token
-   - bots:   an array of bots that belong to the user
-   - groups: an array of the groups the user belongs to 
+    - name:   the name of the user
+    - token:  the user token
+    - bots:   an array of bots that belong to the user
+    - groups: an array of the groups the user belongs to 
 
 
 #Bots
