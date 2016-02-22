@@ -6,14 +6,14 @@ var sendRequest = require('./ApiRequest.js').sendRequest;
  * Creates a User object that can store all the bots
  * created by a user
  *  
- * @param token : a users access token, from groupme developer page 
  * @param Name: sets the name of the user 
+ * @param token : a users access token, from groupme developer page 
  * bots:   list of bots that belong to the user
  * groups: list of groups that the user belongs to 
  */
-var User = function (token, name) {
-	this.token = token;
+var User = function (name, token) {
 	this.name = name;
+	this.token = token;
     this.bots = [];
     this.groups = [];
 };

@@ -21,9 +21,17 @@ Listener.prototype.getPhrase = function() { return this.phrase; }
 
 /*
  * returns the value of the phrase
- * @param message string of gorup message
+ * @param message string of group message
  */
 Listener.prototype.react = function(message) { return this.reaction(message); }
+
+/*
+ * returns true if message cotains the listeners phrase else false
+ * @param message string of group message
+ */
+Listener.prototype.shouldReact = function(message) {
+    return message.indexOf(this.phrase) > 0;
+}
 
 /*
  * tells if two listeners are the same

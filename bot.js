@@ -212,7 +212,7 @@ Bot.prototype.sameBot = function(bot) {
 Bot.prototype.shouldRespond = function(message) {
     for (var i = 0; i < this.listeners.length; i++) {
         var listen = this.listeners[i];
-        if (message.indexOf(listen.getPhrase()) > 0) {
+        if (listen.shouldReact(message)) {
             listen.react(message);
         }
     }
