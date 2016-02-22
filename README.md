@@ -37,10 +37,10 @@ var user = new User("Name", USER_TOKEN);
 
 ###Fields
 User fields:
-    - name:   the name of the user
-    - token:  the user token
-    - bots:   an array of bots that belong to the user
-    - groups: an array of the groups the user belongs to 
+    * name:   the name of the user
+    * token:  the user token
+    * bots:   an array of bots that belong to the user
+    * groups: an array of the groups the user belongs to 
 
 
 #Bots
@@ -60,13 +60,13 @@ var bot = new Bot("Name", GROUP_ID);
 
 ###Fields
 Bot fields 
-    - name      : (required) bots name required to create the bot 
-    - groupId   : group bot belongs too required to send messages to a group
-    - avatar    : url to bot's picture (must go through GroupMe's image service)
-    - callback  : url that will recieve a copy of all message sent to bots group
-    - groupName : the name of group the bot belongs to
-    - botId     : the id of the bot, assigned from GroupMe's API
-    - listeners : an array of all of the bots listeners
+    * name      : (required) bots name required to create the bot 
+    * groupId   : group bot belongs too required to send messages to a group
+    * avatar    : url to bot's picture (must go through GroupMe's image service)
+    * callback  : url that will recieve a copy of all message sent to bots group
+    * groupName : the name of group the bot belongs to
+    * botId     : the id of the bot, assigned from GroupMe's API
+    * listeners : an array of all of the bots listeners
 
 #Listeners
 
@@ -86,10 +86,6 @@ var listener = new Listener("name",
 
 ###Fields
 Listener fields
-    - phrase:   a string to check for in a message
-    - reaction: a function that takes the only message(string) as an argument 
-    - bot:      the bot associated with the listener
-
-
-
-
+    * phrase:   a string to check for in a message
+    * reaction: a function that takes the only message(string) as an argument 
+    * bot:      the bot associated with the listener
